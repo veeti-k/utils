@@ -15,6 +15,7 @@ import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 
 import { Input } from "../components/Input";
+import { Layout } from "../components/Layout";
 import { Month, formatDay, formatMonth } from "../types";
 import { classNames } from "../utils/classNames";
 import { formatCurrency, formatNumber } from "../utils/formatNumber";
@@ -104,7 +105,7 @@ const Home: NextPage = () => {
   );
 
   return (
-    <>
+    <Layout>
       <main className="relative mx-auto mt-[10rem] flex w-full max-w-[400px] flex-col gap-4 px-2 md:max-w-[800px] md:flex-row">
         <div className="flex h-max w-full max-w-[400px] flex-col gap-6 md:sticky md:top-2 md:max-w-[350px]">
           <div className="flex flex-col gap-4">
@@ -280,7 +281,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
 
