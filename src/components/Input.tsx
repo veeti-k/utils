@@ -1,12 +1,11 @@
-import { ComponentProps, ReactNode, forwardRef, useId } from "react";
+import { ComponentProps, forwardRef, useId } from "react";
 
 type Props = ComponentProps<"input"> & {
   label?: string;
-  error?: string | ReactNode;
 };
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, required, id, error, ...rest }, ref) => {
+  ({ label, required, id, ...rest }, ref) => {
     const innerIdid = useId();
     const innerId = id || innerIdid;
 
