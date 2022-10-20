@@ -11,7 +11,7 @@ import isWeekend from "date-fns/isWeekend";
 import startOfWeek from "date-fns/startOfWeek";
 import startOfYear from "date-fns/startOfYear";
 
-import { Day, Holiday, formatDay } from "../types";
+import { DayWithDetails, Holiday, formatDay } from "../types";
 
 type Props = {
 	selectedMonth: Date;
@@ -19,6 +19,7 @@ type Props = {
 	atWorkOnSaturdays: boolean;
 	atWorkOnSundays: boolean;
 	hoursPerDay: number;
+	hourlyPay: number;
 };
 
 export const getDaysWithDetails = ({
@@ -27,6 +28,7 @@ export const getDaysWithDetails = ({
 	holidays,
 	hoursPerDay,
 	selectedMonth,
+	hourlyPay,
 }: Props) => {
 	const days = eachDayOfInterval({
 		start: startOfWeek(startOfYear(selectedMonth), { weekStartsOn: 1 }),
@@ -46,7 +48,7 @@ export const getDaysWithDetails = ({
 			const isDaySaturday = isDayWeekend && isSaturday(day);
 			const isDaySunday = isDayWeekend && isSunday(day);
 
-			const workedHours = !isDayInSelectedYear
+			const workhours = !isDayInSelectedYear
 				? 0
 				: isDaySaturday && !atWorkOnSaturdays
 				? 0
@@ -54,16 +56,19 @@ export const getDaysWithDetails = ({
 				? 0
 				: hoursPerDay;
 
-			const isWorkday = !!workedHours;
+			const isWorkday = !!workhours;
 
 			const formatted = formatDay(day);
+
+			const salary = workhours * hourlyPay;
 
 			return [
 				formatted,
 				{
 					date: day,
 					formattedDate: formatted,
-					workedHours,
+					workhours,
+					salary,
 					isWorkday,
 					isToday: isDayToday,
 					isWeekend: isDayWeekend,
@@ -73,6 +78,6 @@ export const getDaysWithDetails = ({
 					isInSelectedMonth: isDayInSelectedMonth,
 				},
 			];
-		}) as [string, Day][]),
+		}) as [string, DayWithDetails][]),
 	]);
 };

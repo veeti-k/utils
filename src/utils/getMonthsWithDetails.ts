@@ -4,12 +4,12 @@ import isSameMonth from "date-fns/isSameMonth";
 import isSameYear from "date-fns/isSameYear";
 import startOfYear from "date-fns/startOfYear";
 
-import { Day, Month, formatMonth } from "../types";
+import { DayWithDetails, MonthWithDetails, formatMonth } from "../types";
 
 type Props = {
 	selectedMonth: Date;
 	hourlyPay: number;
-	daysWithDetails: Map<string, Day>;
+	daysWithDetails: Map<string, DayWithDetails>;
 };
 
 export const getMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth }: Props) => {
@@ -26,13 +26,10 @@ export const getMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth
 
 			const isMonthInSelectedYear = isSameYear(month, selectedMonth);
 			const isMonthSelected = isSameMonth(month, selectedMonth);
-			const workDaysInMonth = monthsDaysWithDetails.filter((day) => day.isWorkday);
-			const workedHoursInMonth = monthsDaysWithDetails.reduce(
-				(acc, day) => acc + day.workedHours,
-				0
-			);
+			const workdays = monthsDaysWithDetails.filter((day) => day.isWorkday);
+			const workhours = monthsDaysWithDetails.reduce((acc, day) => acc + day.workhours, 0);
 
-			const salary = workedHoursInMonth * hourlyPay;
+			const salary = workhours * hourlyPay;
 			const formatted = formatMonth(month);
 
 			return [
@@ -42,11 +39,11 @@ export const getMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth
 					formattedDate: formatted,
 					isInSelectedYear: isMonthInSelectedYear,
 					isSelected: isMonthSelected,
-					workedHours: workedHoursInMonth,
-					workDays: workDaysInMonth.length,
+					workhours,
+					workdays: workdays.length,
 					salary,
 				},
 			];
-		}) as [string, Month][]),
+		}) as [string, MonthWithDetails][]),
 	]);
 };
