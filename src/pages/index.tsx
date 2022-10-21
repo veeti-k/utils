@@ -10,9 +10,9 @@ const Link = ({ href, icon, children }: { href: string; icon: IconType; children
 
 	return (
 		<NextLink href={href} passHref>
-			<a className="flex cursor-pointer select-none items-center gap-4 rounded-md border-[1px] border-primary-700 bg-primary-800/40 p-4 transition-all duration-150 hover:border-primary-600 hover:bg-primary-700/50 active:scale-95">
+			<a className="flex cursor-pointer select-none items-center gap-4 rounded-md border-[1px] border-primary-700 bg-primary-800 p-4 transition-all duration-150 hover:border-primary-600 hover:bg-primary-700 active:scale-95">
 				<Icon
-					className="rounded-md border-[1px] border-primary-600 bg-primary-700/70 p-2"
+					className="rounded-md border-[1px] border-primary-600 bg-primary-700 p-2"
 					size={50}
 					strokeWidth={0.8}
 				/>
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 				<div className="flex w-full max-w-[400px] flex-col gap-8 p-3">
 					<h1 className="text-4xl font-bold sm:text-5xl">Utils</h1>
 
-					<div className="flex flex-col gap-3 rounded-md border-[1px] border-primary-700 p-2 sm:gap-4 sm:p-3">
+					<div className="flex flex-col gap-3 rounded-md border-[1px] border-primary-700 p-3">
 						<h1 className="text-2xl font-medium sm:text-3xl">Calculators</h1>
 
 						<div className="flex flex-col gap-3">
