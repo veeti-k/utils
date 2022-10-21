@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "~shared/SharedComponents/Input";
 import { Layout } from "~shared/SharedComponents/Layout";
-import { formatCurrency } from "~shared/sharedUtils/formatNumber";
+import { formatCurrency, formatNumber } from "~shared/sharedUtils/formatNumber";
 
 const Home: NextPage = () => {
 	const form = useForm({
@@ -21,18 +21,20 @@ const Home: NextPage = () => {
 	const payers = form.watch("payers");
 
 	const cost = (fuelPrice * fuelConsumption * distance) / 100;
-	const costDividedAmongPayers = formatCurrency(cost / payers);
-	const costPerKm = formatCurrency(cost / distance);
+	const costTimesTwo = cost * 2;
+	const costDividedAmongPayers = cost / payers;
+	const costDividedAmongPayersTimesTwo = costTimesTwo / payers;
+	const costPerKm = cost / distance;
 
 	const moreThanOnePayer = payers > 1;
 
 	return (
 		<Layout title="Calculators | Fuel">
-			<main className="mx-auto w-full max-w-[400px] pt-[10vh] ">
+			<main className="mx-auto w-full max-w-[400px] p-3 pt-[5vh] sm:pt-[10vh]">
 				<h1 className="pb-4 text-4xl font-medium">Fuel cost calculator</h1>
 
-				<div className="flex flex-col gap-4">
-					<div className="flex w-full flex-col gap-6 rounded-md border-[1px] border-primary-700 bg-primary-800 p-3">
+				<div className="flex flex-col gap-3">
+					<div className="flex w-full flex-col gap-5 rounded-md border-[1px] border-primary-700 bg-primary-800 p-3">
 						<Input
 							label="(L/100 km) Average fuel consumption"
 							type="number"
@@ -65,22 +67,38 @@ const Home: NextPage = () => {
 					<div className="rounded-md border-[1px] border-primary-700 bg-primary-800 p-3">
 						<h2 className="pb-2 text-2xl font-medium">Results</h2>
 
-						<div className="flex flex-col gap-1 text-lg">
-							<div className="flex justify-between">
-								<span>Cost</span>
-								<span>{formatCurrency(cost)}</span>
+						<div className="flex flex-col gap-2 text-lg">
+							<div>
+								<div className="flex justify-between">
+									<span>Cost</span>
+									<span>{formatCurrency(cost)}</span>
+								</div>
+
+								<div className="flex justify-between">
+									<span>Cost * 2</span>
+									<span>{formatCurrency(cost * 2)}</span>
+								</div>
 							</div>
 
 							{moreThanOnePayer && (
-								<div className="flex justify-between">
-									<span>Divided cost</span>
-									<span>{costDividedAmongPayers}</span>
+								<div>
+									<div className="flex justify-between">
+										<span>Divided cost</span>
+										<span>{formatCurrency(costDividedAmongPayers)}</span>
+									</div>
+
+									<div className="flex justify-between">
+										<span>Divided cost * 2</span>
+										<span>
+											{formatCurrency(costDividedAmongPayersTimesTwo)}
+										</span>
+									</div>
 								</div>
 							)}
 
 							<div className="flex justify-between">
 								<span>Cost per km</span>
-								<span>{costPerKm}</span>
+								<span>{formatNumber(costPerKm)}</span>
 							</div>
 						</div>
 					</div>
