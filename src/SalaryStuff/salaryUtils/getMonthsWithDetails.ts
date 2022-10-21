@@ -5,6 +5,7 @@ import isSameYear from "date-fns/isSameYear";
 import startOfYear from "date-fns/startOfYear";
 
 import { DayWithDetails, MonthWithDetails, formatMonth } from "~shared/sharedTypes";
+import { formatNumber } from "~shared/sharedUtils/formatNumber";
 
 type Props = {
 	selectedMonth: Date;
@@ -28,6 +29,7 @@ export const getMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth
 			const isMonthSelected = isSameMonth(month, selectedMonth);
 			const workdays = monthsDaysWithDetails.filter((day) => day.isWorkday);
 			const workhours = monthsDaysWithDetails.reduce((acc, day) => acc + day.workhours, 0);
+			const formattedWorkhours = formatNumber(workhours);
 
 			const salary = workhours * hourlyPay;
 			const formatted = formatMonth(month);
@@ -40,6 +42,7 @@ export const getMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth
 					isInSelectedYear: isMonthInSelectedYear,
 					isSelected: isMonthSelected,
 					workhours,
+					formattedWorkhours,
 					workdays: workdays.length,
 					salary,
 				},

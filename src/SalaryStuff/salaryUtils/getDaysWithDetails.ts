@@ -12,6 +12,7 @@ import startOfWeek from "date-fns/startOfWeek";
 import startOfYear from "date-fns/startOfYear";
 
 import { DayWithDetails, Holiday, formatDay } from "~shared/sharedTypes";
+import { formatNumber } from "~shared/sharedUtils/formatNumber";
 
 type Props = {
 	selectedMonth: Date;
@@ -56,6 +57,8 @@ export const getDaysWithDetails = ({
 				? 0
 				: hoursPerDay;
 
+			const formattedWorkhours = formatNumber(workhours);
+
 			const isWorkday = !!workhours;
 
 			const formatted = formatDay(day);
@@ -68,6 +71,7 @@ export const getDaysWithDetails = ({
 					date: day,
 					formattedDate: formatted,
 					workhours,
+					formattedWorkhours,
 					salary,
 					isWorkday,
 					isToday: isDayToday,

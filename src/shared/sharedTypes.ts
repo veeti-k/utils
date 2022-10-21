@@ -5,6 +5,7 @@ export type DayWithDetails = {
 	date: Date;
 	formattedDate: string;
 	workhours: number;
+	formattedWorkhours: string;
 	salary: number;
 	isWorkday: boolean;
 	isToday: boolean;
@@ -28,6 +29,7 @@ export type MonthWithDetails = {
 	isInSelectedYear: boolean;
 	isSelected: boolean;
 	workhours: number;
+	formattedWorkhours: string;
 	workdays: number;
 	salary: number;
 };

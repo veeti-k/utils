@@ -16,29 +16,30 @@ export const Info = () => {
 	return (
 		<>
 			<div className="flex flex-col gap-2">
-				<div className="border-primary-700 bg-primary-800 flex flex-col gap-1 rounded-md border-[1px] p-2">
+				<div className="flex flex-col gap-1 rounded-md border-[1px] border-primary-700 bg-primary-800 p-2">
 					<h2 className="font-bold">Salary in {selectedMonthFormatted}</h2>
 					<span>{formatCurrency(selectedMonthsSalary)}</span>
 				</div>
 
-				<div className="border-primary-700 bg-primary-800 flex flex-col gap-1 rounded-md border-[1px] p-2">
+				<div className="flex flex-col gap-1 rounded-md border-[1px] border-primary-700 bg-primary-800 p-2">
 					<h2 className="font-bold">Salary in {selectedYearFormatted}</h2>
 					<span>{formatCurrency(selectedYearsSalary)}</span>
 				</div>
 			</div>
 
 			<div className="flex flex-col gap-2">
-				<div className="border-primary-700 bg-primary-800 flex flex-col gap-1 rounded-md border-[1px] p-2">
+				<div className="flex flex-col gap-1 rounded-md border-[1px] border-primary-700 bg-primary-800 p-2">
 					<h2 className="font-bold">Total work hours in {selectedYearFormatted}</h2>
 					<span>{formatNumber(selectedYearsTotalWorkhours)} h</span>
 				</div>
 
-				<div className="border-primary-700 bg-primary-800 flex flex-col gap-1 rounded-md border-[1px] p-2">
+				<div className="flex flex-col gap-1 rounded-md border-[1px] border-primary-700 bg-primary-800 p-2">
 					<h2 className="font-bold">Highest numbers month</h2>
 					<b>{format(highestWorkdaysMonth.date, "MMMM")}</b>
 
 					<span>
-						{highestWorkdaysMonth.workdays} workdays, {highestWorkdaysMonth.workhours} h
+						{highestWorkdaysMonth.workdays} workdays,{" "}
+						{highestWorkdaysMonth.formattedWorkhours} h
 					</span>
 
 					<span>
