@@ -15,7 +15,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 					id={innerId}
 					autoComplete="off"
 					required={required}
-					className="focus rounded-md border-[1px] border-transparent bg-gray-600 p-2 duration-200 hover:border-gray-400 focus-visible:border-blue-500"
+					className="focus rounded-md border-[1px] border-transparent bg-primary-600 p-2 duration-200 hover:border-primary-400 focus-visible:border-blue-500"
 					{...rest}
 					ref={ref}
 				/>
@@ -29,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 					id={innerId}
 					autoComplete="off"
 					required={required}
-					className="focus rounded-md border-[1px] border-transparent bg-gray-600 p-2 duration-200 hover:border-gray-400 focus-visible:border-blue-500"
+					className="focus rounded-md border-[1px] border-transparent bg-primary-600 p-2 duration-200 hover:border-primary-400 focus-visible:border-blue-500"
 					{...rest}
 					ref={ref}
 				/>

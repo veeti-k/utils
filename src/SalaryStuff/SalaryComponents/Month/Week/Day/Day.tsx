@@ -29,7 +29,7 @@ export const Day = ({ day, month }: Props) => {
 		<div
 			key={dayWithDetails.formattedDate}
 			className={classNames(
-				"flex items-center rounded-md border-[1px] border-gray-600 bg-gray-700 p-1 outline-none transition-all duration-150",
+				"border-primary-600 bg-primary-700 flex items-center rounded-md border-[1px] p-1 outline-none transition-all duration-150",
 				isToday(day) && "rounded-md border-2 border-blue-500",
 				isDimmed && "opacity-30",
 				isSelected &&
@@ -49,7 +49,7 @@ export const Day = ({ day, month }: Props) => {
 					dateTime={dayWithDetails.formattedDate}
 					className={classNames(
 						dayWithDetails?.isWeekend && "text-red-500",
-						"w-max rounded-md border-[1px] border-gray-500 bg-gray-600 px-1 text-sm sm:text-base"
+						"border-primary-500 bg-primary-600 w-max rounded-md border-[1px] px-1 text-sm sm:text-base"
 					)}
 				>
 					{format(day, "dd")}

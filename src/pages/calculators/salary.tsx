@@ -3,18 +3,17 @@ import type { NextPage } from "next";
 import { Form } from "~SalaryStuff/SalaryComponents/Form/Form";
 import { Info } from "~SalaryStuff/SalaryComponents/Info/Info";
 import { Month } from "~SalaryStuff/SalaryComponents/Month/Month";
-import { Layout } from "~shared/SharedComponents/Layout";
-
 import {
 	SalaryContextProvider,
 	useSalaryContext,
-} from "../SalaryStuff/SalaryContext/SalaryContextProvider";
+} from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { Layout } from "~shared/SharedComponents/Layout";
 
 const SalaryPage: NextPage = () => {
 	const { months } = useSalaryContext();
 
 	return (
-		<Layout>
+		<Layout title="Salary | Calculators">
 			<main className="relative mx-auto mt-[10rem] mb-4 flex w-full max-w-[1200px] flex-col justify-center gap-4 px-2 bp-1:flex-row">
 				<div className="mx-auto flex h-max w-full max-w-[400px] flex-col gap-6 md:sticky md:top-2">
 					<Form />

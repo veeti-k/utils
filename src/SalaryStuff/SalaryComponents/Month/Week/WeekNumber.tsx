@@ -18,7 +18,7 @@ export const WeekNumber = ({ week, days }: Props) => {
 
 	return (
 		<div
-			className="flex items-center justify-center rounded-md border-[1px] border-gray-700 bg-gray-800"
+			className="border-primary-700 bg-primary-800 flex items-center justify-center rounded-md border-[1px]"
 			onClick={() => toggleDaysSelected(days.map((d) => formatDay(d)))}
 			onMouseOverCapture={(e) => {
 				if (e.shiftKey) {

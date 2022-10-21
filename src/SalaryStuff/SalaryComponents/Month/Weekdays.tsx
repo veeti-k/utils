@@ -15,8 +15,8 @@ export const Weekdays = ({ monthWithDetails }: Props) => {
 				<span
 					key={`${monthWithDetails.formattedDate}-${weekDay}-${index}`}
 					className={classNames(
-						"flex items-center justify-center rounded-md border-[1px] border-gray-700 bg-gray-800 p-2",
-						index === 0 && "border-gray-600 bg-gray-700"
+						"border-primary-700 bg-primary-800 flex items-center justify-center rounded-md border-[1px] p-2",
+						index === 0 && "border-primary-600 bg-primary-700"
 					)}
 					onClick={() => {
 						if (index !== 0) return;

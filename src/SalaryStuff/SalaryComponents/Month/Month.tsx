@@ -30,7 +30,7 @@ export const Month = ({ month }: Props) => {
 	return (
 		<div
 			key={monthWithDetails.formattedDate}
-			className="flex select-none flex-col gap-2 rounded-md border-[1px] border-gray-700 bg-gray-800 p-2"
+			className="border-primary-700 bg-primary-800 flex select-none flex-col gap-2 rounded-md border-[1px] p-2"
 		>
 			<MonthInfo monthWithDetails={monthWithDetails} />
 
