@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 
-import { MonthWithDetails } from "../../types";
-import { formatCurrency, formatNumber } from "../../utils/formatNumber";
+import { MonthWithDetails } from "~shared/sharedTypes";
+import { formatCurrency, formatNumber } from "~shared/sharedUtils/formatNumber";
 
 type Props = {
 	monthWithDetails: MonthWithDetails;

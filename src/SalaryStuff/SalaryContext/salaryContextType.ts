@@ -7,9 +7,9 @@ import {
 	Holiday,
 	MonthWithDetails,
 	MonthsWithDetails,
-} from "../../types";
+} from "~shared/sharedTypes";
 
-export type ContextType = {
+export type SalaryContextType = {
 	form: UseFormReturn<
 		{
 			month: string;

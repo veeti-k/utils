@@ -8,23 +8,23 @@ import startOfYear from "date-fns/startOfYear";
 import { ReactNode, useMemo } from "react";
 import { useForm } from "react-hook-form";
 
-import { formatMonth } from "../../types";
-import { useDaysWithDetails } from "../useDaysWithDetails";
-import { useHolidays } from "../useHolidays";
-import { useMonthsWithDetails } from "../useMonthsWithDetails";
-import { useSelectedDays } from "../useSelectedDays";
-import { ContextType } from "./contextType";
-import { createCtx } from "./createContext";
+import { createCtx } from "../../context/createContext";
+import { formatMonth } from "../../shared/sharedTypes";
+import { SalaryContextType } from "./salaryContextType";
+import { useDaysWithDetails } from "./useDaysWithDetails";
+import { useHolidays } from "./useHolidays";
+import { useMonthsWithDetails } from "./useMonthsWithDetails";
+import { useSelectedDays } from "./useSelectedDays";
 
-const [useContextInner, Context] = createCtx<ContextType>();
+const [useContextInner, Context] = createCtx<SalaryContextType>();
 
-export const useContext = () => useContextInner();
+export const useSalaryContext = () => useContextInner();
 
 type Props = {
 	children: ReactNode;
 };
 
-export const ContextProvider = ({ children }: Props) => {
+export const SalaryContextProvider = ({ children }: Props) => {
 	const form = useForm({
 		defaultValues: {
 			month: formatMonth(new Date()),

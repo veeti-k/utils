@@ -2,8 +2,9 @@ import eachWeekOfInterval from "date-fns/eachWeekOfInterval";
 import endOfMonth from "date-fns/endOfMonth";
 import startOfMonth from "date-fns/startOfMonth";
 
-import { useContext } from "../../Context/contextStuff/provider";
-import { formatMonth } from "../../types";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { formatMonth } from "~shared/sharedTypes";
+
 import { MonthInfo } from "./MonthInfo";
 import { Week } from "./Week/Week";
 import { Weekdays } from "./Weekdays";
@@ -13,7 +14,7 @@ type Props = {
 };
 
 export const Month = ({ month }: Props) => {
-	const { getMonthWithDetails } = useContext();
+	const { getMonthWithDetails } = useSalaryContext();
 
 	const monthWithDetails = getMonthWithDetails(formatMonth(month));
 	if (!monthWithDetails) return null;

@@ -1,8 +1,8 @@
-import { useContext } from "../../Context/contextStuff/provider";
-import { Input } from "../Input";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { Input } from "~shared/SharedComponents/Input";
 
 export const Form = () => {
-	const { form } = useContext();
+	const { form } = useSalaryContext();
 
 	return (
 		<>

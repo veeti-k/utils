@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 
-import { useContext } from "../../Context/contextStuff/provider";
-import { formatCurrency, formatNumber } from "../../utils/formatNumber";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { formatCurrency, formatNumber } from "~shared/sharedUtils/formatNumber";
 
 export const Info = () => {
 	const {
@@ -11,7 +11,7 @@ export const Info = () => {
 		selectedYearsSalary,
 		selectedYearsTotalWorkhours,
 		highestWorkdaysMonth,
-	} = useContext();
+	} = useSalaryContext();
 
 	return (
 		<>

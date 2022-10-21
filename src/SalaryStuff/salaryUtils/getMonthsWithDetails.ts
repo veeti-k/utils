@@ -4,7 +4,7 @@ import isSameMonth from "date-fns/isSameMonth";
 import isSameYear from "date-fns/isSameYear";
 import startOfYear from "date-fns/startOfYear";
 
-import { DayWithDetails, MonthWithDetails, formatMonth } from "../types";
+import { DayWithDetails, MonthWithDetails, formatMonth } from "~shared/sharedTypes";
 
 type Props = {
 	selectedMonth: Date;

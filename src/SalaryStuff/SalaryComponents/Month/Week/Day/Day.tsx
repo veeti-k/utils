@@ -2,9 +2,9 @@ import format from "date-fns/format";
 import isSameMonth from "date-fns/isSameMonth";
 import isToday from "date-fns/isToday";
 
-import { useContext } from "../../../../Context/contextStuff/provider";
-import { formatDay } from "../../../../types";
-import { classNames } from "../../../../utils/classNames";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { formatDay } from "~shared/sharedTypes";
+import { classNames } from "~shared/sharedUtils/classNames";
 
 type Props = {
 	day: Date;
@@ -13,7 +13,7 @@ type Props = {
 
 export const Day = ({ day, month }: Props) => {
 	const { getDayWithDetails, isDaySelected, setDaysSelected, toggleDaysWithDetailsSelected } =
-		useContext();
+		useSalaryContext();
 
 	const dayWithDetails = getDayWithDetails(formatDay(day));
 	if (!dayWithDetails) return null;

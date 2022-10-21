@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { getHolidays } from "../utils/getHolidays";
+import { getHolidays } from "~shared/sharedUtils/getHolidays";
 
 type Props = {
 	selectedMonthAsDate: Date;

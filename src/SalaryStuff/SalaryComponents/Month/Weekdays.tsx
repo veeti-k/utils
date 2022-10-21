@@ -1,13 +1,13 @@
-import { useContext } from "../../Context/contextStuff/provider";
-import { MonthWithDetails } from "../../types";
-import { classNames } from "../../utils/classNames";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { MonthWithDetails } from "~shared/sharedTypes";
+import { classNames } from "~shared/sharedUtils/classNames";
 
 type Props = {
 	monthWithDetails: MonthWithDetails;
 };
 
 export const Weekdays = ({ monthWithDetails }: Props) => {
-	const { getDaysWithDetailsOfMonth, toggleDaysWithDetailsSelected } = useContext();
+	const { getDaysWithDetailsOfMonth, toggleDaysWithDetailsSelected } = useSalaryContext();
 
 	return (
 		<div className="grid grid-cols-8 gap-1 ">

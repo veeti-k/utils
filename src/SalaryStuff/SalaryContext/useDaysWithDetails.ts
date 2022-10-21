@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 
-import { DayWithDetails, Holiday } from "../types";
-import { getDaysWithDetails } from "../utils/getDaysWithDetails";
+import { getDaysWithDetails } from "~SalaryStuff/salaryUtils/getDaysWithDetails";
+import { DayWithDetails, Holiday } from "~shared/sharedTypes";
 
 type Props = {
 	selectedMonth: Date;

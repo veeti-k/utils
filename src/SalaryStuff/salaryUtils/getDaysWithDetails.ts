@@ -11,7 +11,7 @@ import isWeekend from "date-fns/isWeekend";
 import startOfWeek from "date-fns/startOfWeek";
 import startOfYear from "date-fns/startOfYear";
 
-import { DayWithDetails, Holiday, formatDay } from "../types";
+import { DayWithDetails, Holiday, formatDay } from "~shared/sharedTypes";
 
 type Props = {
 	selectedMonth: Date;

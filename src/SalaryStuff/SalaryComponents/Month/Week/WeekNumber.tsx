@@ -1,7 +1,7 @@
 import getWeek from "date-fns/getWeek";
 
-import { useContext } from "../../../Context/contextStuff/provider";
-import { formatDay } from "../../../types";
+import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { formatDay } from "~shared/sharedTypes";
 
 type Props = {
 	week: Date;
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const WeekNumber = ({ week, days }: Props) => {
-	const { toggleDaysSelected } = useContext();
+	const { toggleDaysSelected } = useSalaryContext();
 
 	const weekNumber = getWeek(week, {
 		weekStartsOn: 1,
