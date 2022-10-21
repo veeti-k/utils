@@ -29,7 +29,7 @@ export const Day = ({ day, month }: Props) => {
 				isToday(day) && "rounded-md border-2 border-blue-500",
 				isDimmed && "opacity-30",
 				isSelected &&
-					"border-transparent bg-transparent outline-none outline-1 outline-offset-0 outline-blue-600"
+					"border-transparent bg-transparent outline-none outline-1 outline-offset-0 outline-blue-500"
 			)}
 			onClick={() => toggleDaysWithDetailsSelected([dayWithDetails])}
 			onMouseOverCapture={(e) => {
