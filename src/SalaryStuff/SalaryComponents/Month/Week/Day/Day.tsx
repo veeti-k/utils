@@ -12,8 +12,12 @@ type Props = {
 };
 
 export const Day = ({ day, month }: Props) => {
-	const { getDayWithDetails, isDaySelected, setDaysSelected, toggleDaysWithDetailsSelected } =
-		useSalaryContext();
+	const {
+		getDayWithDetails,
+		isDaySelected,
+		setDaysWithDetailsSelected,
+		toggleDaysWithDetailsSelected,
+	} = useSalaryContext();
 
 	const dayWithDetails = getDayWithDetails(formatDay(day));
 	if (!dayWithDetails) return null;
@@ -34,9 +38,9 @@ export const Day = ({ day, month }: Props) => {
 			onClick={() => toggleDaysWithDetailsSelected([dayWithDetails])}
 			onMouseOverCapture={(e) => {
 				if (e.shiftKey) {
-					setDaysSelected([dayWithDetails.formattedDate], true);
+					setDaysWithDetailsSelected([dayWithDetails], true);
 				} else if (e.ctrlKey) {
-					setDaysSelected([dayWithDetails.formattedDate], false);
+					setDaysWithDetailsSelected([dayWithDetails], false);
 				}
 			}}
 		>

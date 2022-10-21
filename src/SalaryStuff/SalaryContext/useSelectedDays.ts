@@ -80,11 +80,28 @@ export const useSelectedDays = ({ daysWithDetails }: Props) => {
 		});
 	}, []);
 
+	const setDaysWithDetailsSelected = useCallback((days: DayWithDetails[], value: boolean) => {
+		setSelectedDays((prev) => {
+			const newSelectedDays = new Map(prev);
+
+			days.forEach((day) => {
+				if (value) {
+					newSelectedDays.set(day.formattedDate, day);
+				} else {
+					newSelectedDays.delete(day.formattedDate);
+				}
+			});
+
+			return newSelectedDays;
+		});
+	}, []);
+
 	return {
 		selectedDays,
 		toggleDaysSelected,
 		toggleDaysWithDetailsSelected,
 		setDaysSelected,
+		setDaysWithDetailsSelected,
 		isDaySelected,
 	};
 };

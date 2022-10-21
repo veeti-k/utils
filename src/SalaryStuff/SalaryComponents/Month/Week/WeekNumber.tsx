@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const WeekNumber = ({ week, days }: Props) => {
-	const { toggleDaysSelected } = useSalaryContext();
+	const { toggleDaysSelected, setDaysSelected } = useSalaryContext();
 
 	const weekNumber = getWeek(week, {
 		weekStartsOn: 1,
@@ -20,6 +20,19 @@ export const WeekNumber = ({ week, days }: Props) => {
 		<div
 			className="flex items-center justify-center rounded-md border-[1px] border-gray-700 bg-gray-800"
 			onClick={() => toggleDaysSelected(days.map((d) => formatDay(d)))}
+			onMouseOverCapture={(e) => {
+				if (e.shiftKey) {
+					setDaysSelected(
+						days.map((d) => formatDay(d)),
+						true
+					);
+				} else if (e.ctrlKey) {
+					setDaysSelected(
+						days.map((d) => formatDay(d)),
+						false
+					);
+				}
+			}}
 		>
 			<div className="rounded-md px-1">{weekNumber}</div>
 		</div>

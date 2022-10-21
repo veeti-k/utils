@@ -57,10 +57,15 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		hourlyPay,
 	});
 
-	const { toggleDaysSelected, toggleDaysWithDetailsSelected, isDaySelected, setDaysSelected } =
-		useSelectedDays({
-			daysWithDetails,
-		});
+	const {
+		toggleDaysSelected,
+		toggleDaysWithDetailsSelected,
+		isDaySelected,
+		setDaysSelected,
+		setDaysWithDetailsSelected,
+	} = useSelectedDays({
+		daysWithDetails,
+	});
 
 	const { getMonthWithDetails, monthsWithDetails } = useMonthsWithDetails({
 		selectedMonth: selectedMonthAsDate,
@@ -126,6 +131,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 				toggleDaysWithDetailsSelected,
 				isDaySelected,
 				setDaysSelected,
+				setDaysWithDetailsSelected,
 
 				daysWithDetails,
 				monthsWithDetails,

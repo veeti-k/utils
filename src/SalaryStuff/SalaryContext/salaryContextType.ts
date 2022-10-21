@@ -28,6 +28,7 @@ export type SalaryContextType = {
 	toggleDaysWithDetailsSelected: (daysWithDetails: DayWithDetails[]) => void;
 	isDaySelected: (formattedDay: string) => boolean;
 	setDaysSelected: (formattedDays: string[], value: boolean) => void;
+	setDaysWithDetailsSelected: (daysWithDetails: DayWithDetails[], value: boolean) => void;
 
 	daysWithDetails: DaysWithDetails;
 	monthsWithDetails: MonthsWithDetails;
