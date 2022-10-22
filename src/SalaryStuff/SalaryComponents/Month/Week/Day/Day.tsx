@@ -24,6 +24,7 @@ export const Day = ({ day, month }: Props) => {
 
 	const isDimmed = !isSameMonth(day, month);
 	const isSelected = isDaySelected(dayWithDetails.formattedDate);
+	const isHoliday = dayWithDetails.isHoliday;
 
 	return (
 		<div
@@ -48,7 +49,7 @@ export const Day = ({ day, month }: Props) => {
 				<time
 					dateTime={dayWithDetails.formattedDate}
 					className={classNames(
-						dayWithDetails?.isWeekend && "text-red-500",
+						(dayWithDetails?.isWeekend || isHoliday) && "text-red-500",
 						"w-max rounded-md border-[1px] border-primary-500 bg-primary-600 px-1 text-sm sm:text-base"
 					)}
 				>

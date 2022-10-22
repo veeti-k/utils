@@ -4,6 +4,7 @@ import { HolidaysTypes } from "date-holidays";
 export type DayWithDetails = {
 	date: Date;
 	formattedDate: string;
+	week: number;
 	workhours: number;
 	formattedWorkhours: string;
 	salary: number;

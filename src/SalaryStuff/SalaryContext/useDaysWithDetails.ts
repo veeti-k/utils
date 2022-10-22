@@ -40,18 +40,26 @@ export const useDaysWithDetails = ({
 
 	const getDaysWithDetailsOfMonth = useCallback(
 		(formattedMonth: string) => {
-			const daysWithDetailsOfMonth: DayWithDetails[] = [];
-
-			for (const [formattedDay, dayWithDetails] of daysWithDetails) {
-				if (formattedDay.startsWith(formattedMonth)) {
-					daysWithDetailsOfMonth.push(dayWithDetails);
-				}
-			}
-
-			return daysWithDetailsOfMonth;
+			return [...daysWithDetails.values()].filter((dayWithDetails) =>
+				dayWithDetails.formattedDate.startsWith(formattedMonth)
+			);
 		},
 		[daysWithDetails]
 	);
 
-	return { daysWithDetails, getDaysWithDetailsOfMonth, getDayWithDetails };
+	const getDaysWithDetailsOfWeek = useCallback(
+		(week: number) => {
+			return [...daysWithDetails.values()].filter(
+				(dayWithDetails) => dayWithDetails.week === week
+			);
+		},
+		[daysWithDetails]
+	);
+
+	return {
+		daysWithDetails,
+		getDaysWithDetailsOfMonth,
+		getDaysWithDetailsOfWeek,
+		getDayWithDetails,
+	};
 };

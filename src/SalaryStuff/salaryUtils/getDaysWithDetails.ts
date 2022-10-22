@@ -1,6 +1,7 @@
 import eachDayOfInterval from "date-fns/eachDayOfInterval";
 import endOfWeek from "date-fns/endOfWeek";
 import endOfYear from "date-fns/endOfYear";
+import getWeek from "date-fns/getWeek";
 import isSameDay from "date-fns/isSameDay";
 import isSameMonth from "date-fns/isSameMonth";
 import isSameYear from "date-fns/isSameYear";
@@ -49,20 +50,19 @@ export const getDaysWithDetails = ({
 			const isDaySaturday = isDayWeekend && isSaturday(day);
 			const isDaySunday = isDayWeekend && isSunday(day);
 
-			const workhours = !isDayInSelectedYear
-				? 0
-				: isDaySaturday && !atWorkOnSaturdays
-				? 0
-				: isDaySunday && !atWorkOnSundays
-				? 0
-				: hoursPerDay;
+			const week = getWeek(day, { weekStartsOn: 1, firstWeekContainsDate: 4 });
+			const workhours =
+				!isDayInSelectedYear ||
+				(isDaySaturday && !atWorkOnSaturdays) ||
+				(isDaySunday && !atWorkOnSundays) ||
+				isDayHoliday
+					? 0
+					: hoursPerDay;
 
 			const formattedWorkhours = formatNumber(workhours);
-
-			const isWorkday = !!workhours;
-
 			const formatted = formatDay(day);
 
+			const isWorkday = !!workhours;
 			const salary = workhours * hourlyPay;
 
 			return [
@@ -73,6 +73,7 @@ export const getDaysWithDetails = ({
 					workhours,
 					formattedWorkhours,
 					salary,
+					week,
 					isWorkday,
 					isToday: isDayToday,
 					isWeekend: isDayWeekend,

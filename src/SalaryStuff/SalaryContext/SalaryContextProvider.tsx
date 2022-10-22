@@ -48,7 +48,12 @@ export const SalaryContextProvider = ({ children }: Props) => {
 
 	const holidays = useHolidays({ selectedMonthAsDate });
 
-	const { getDayWithDetails, getDaysWithDetailsOfMonth, daysWithDetails } = useDaysWithDetails({
+	const {
+		getDayWithDetails,
+		getDaysWithDetailsOfMonth,
+		getDaysWithDetailsOfWeek,
+		daysWithDetails,
+	} = useDaysWithDetails({
 		selectedMonth: selectedMonthAsDate,
 		hoursPerDay,
 		atWorkOnSaturdays,
@@ -149,6 +154,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 				monthsWithDetails,
 				getDayWithDetails,
 				getDaysWithDetailsOfMonth,
+				getDaysWithDetailsOfWeek,
 				getMonthWithDetails,
 
 				selectedYearsWorkdays,

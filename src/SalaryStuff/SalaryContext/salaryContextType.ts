@@ -34,6 +34,7 @@ export type SalaryContextType = {
 	monthsWithDetails: MonthsWithDetails;
 	getDayWithDetails: (formattedDay: string) => DayWithDetails | undefined;
 	getDaysWithDetailsOfMonth: (formattedMonth: string) => DayWithDetails[];
+	getDaysWithDetailsOfWeek: (week: number) => DayWithDetails[];
 	getMonthWithDetails: (formattedMonth: string) => MonthWithDetails | undefined;
 
 	inputs: {

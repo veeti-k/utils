@@ -15,17 +15,21 @@ export const Weekdays = ({ monthWithDetails }: Props) => {
 				<span
 					key={`${monthWithDetails.formattedDate}-${weekDay}-${index}`}
 					className={classNames(
-						"border-primary-700 bg-primary-800 flex items-center justify-center rounded-md border-[1px] p-2",
+						"flex items-center justify-center rounded-md border-[1px] border-primary-700 bg-primary-800 p-2",
 						index === 0 && "border-primary-600 bg-primary-700"
 					)}
-					onClick={() => {
+					onClick={(e) => {
 						if (index !== 0) return;
 
 						const daysWithDetailsOfMonth = getDaysWithDetailsOfMonth(
 							monthWithDetails.formattedDate
 						);
 
-						toggleDaysWithDetailsSelected(daysWithDetailsOfMonth);
+						toggleDaysWithDetailsSelected(
+							e.altKey
+								? daysWithDetailsOfMonth.filter((day) => day.isWorkday)
+								: daysWithDetailsOfMonth
+						);
 					}}
 				>
 					{weekDay}

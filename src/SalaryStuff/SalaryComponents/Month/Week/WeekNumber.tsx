@@ -9,26 +9,39 @@ type Props = {
 };
 
 export const WeekNumber = ({ week, days }: Props) => {
-	const { toggleDaysSelected, setDaysSelected } = useSalaryContext();
+	const { toggleDaysWithDetailsSelected, setDaysWithDetailsSelected, getDaysWithDetailsOfWeek } =
+		useSalaryContext();
 
 	const weekNumber = getWeek(week, {
 		weekStartsOn: 1,
 		firstWeekContainsDate: 4,
 	});
 
+	const daysWithDetailsOfWeek = getDaysWithDetailsOfWeek(weekNumber);
+
 	return (
 		<div
-			className="border-primary-700 bg-primary-800 flex items-center justify-center rounded-md border-[1px]"
-			onClick={() => toggleDaysSelected(days.map((d) => formatDay(d)))}
+			className="flex items-center justify-center rounded-md border-[1px] border-primary-700 bg-primary-800"
+			onClick={(e) =>
+				toggleDaysWithDetailsSelected(
+					e.altKey
+						? daysWithDetailsOfWeek.filter((day) => day.isWorkday)
+						: daysWithDetailsOfWeek
+				)
+			}
 			onMouseOverCapture={(e) => {
 				if (e.shiftKey) {
-					setDaysSelected(
-						days.map((d) => formatDay(d)),
+					setDaysWithDetailsSelected(
+						e.altKey
+							? daysWithDetailsOfWeek.filter((d) => d.isWorkday)
+							: daysWithDetailsOfWeek,
 						true
 					);
 				} else if (e.ctrlKey) {
-					setDaysSelected(
-						days.map((d) => formatDay(d)),
+					setDaysWithDetailsSelected(
+						e.altKey
+							? daysWithDetailsOfWeek.filter((d) => d.isWorkday)
+							: daysWithDetailsOfWeek,
 						false
 					);
 				}
