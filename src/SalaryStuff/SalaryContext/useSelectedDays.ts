@@ -9,49 +9,55 @@ type Props = {
 export const useSelectedDays = ({ daysWithDetails }: Props) => {
 	const [selectedDays, setSelectedDays] = useState<Map<string, DayWithDetails>>(new Map());
 
-	const toggleDaysSelected = useCallback((formattedDays: string[]) => {
-		setSelectedDays((prev) => {
-			const newSelectedDays = new Map(prev);
+	const toggleDaysSelected = useCallback(
+		(formattedDays: string[]) => {
+			setSelectedDays((prev) => {
+				const newSelectedDays = new Map(prev);
 
-			const everyDayIsSelected = formattedDays.every((formattedDay) =>
-				newSelectedDays.has(formattedDay)
-			);
+				const everyDayIsSelected = formattedDays.every((formattedDay) =>
+					newSelectedDays.has(formattedDay)
+				);
 
-			formattedDays.forEach((formattedDay) => {
-				if (everyDayIsSelected) {
-					newSelectedDays.delete(formattedDay);
-				} else {
-					const dayWithDetails = daysWithDetails.get(formattedDay);
+				formattedDays.forEach((formattedDay) => {
+					if (everyDayIsSelected) {
+						newSelectedDays.delete(formattedDay);
+					} else {
+						const dayWithDetails = daysWithDetails.get(formattedDay);
 
-					if (!dayWithDetails) return;
+						if (!dayWithDetails) return;
 
-					newSelectedDays.set(formattedDay, dayWithDetails);
-				}
+						newSelectedDays.set(formattedDay, dayWithDetails);
+					}
+				});
+
+				return newSelectedDays;
 			});
+		},
+		[daysWithDetails]
+	);
 
-			return newSelectedDays;
-		});
-	}, []);
+	const toggleDaysWithDetailsSelected = useCallback(
+		(daysWithDetails: DayWithDetails[]) => {
+			setSelectedDays((prev) => {
+				const newSelectedDays = new Map(prev);
 
-	const toggleDaysWithDetailsSelected = useCallback((daysWithDetails: DayWithDetails[]) => {
-		setSelectedDays((prev) => {
-			const newSelectedDays = new Map(prev);
+				const everyDayIsSelected = daysWithDetails.every((dayWithDetails) =>
+					newSelectedDays.has(dayWithDetails.formattedDate)
+				);
 
-			const everyDayIsSelected = daysWithDetails.every((dayWithDetails) =>
-				newSelectedDays.has(dayWithDetails.formattedDate)
-			);
+				daysWithDetails.forEach((dayWithDetails) => {
+					if (everyDayIsSelected) {
+						newSelectedDays.delete(dayWithDetails.formattedDate);
+					} else {
+						newSelectedDays.set(dayWithDetails.formattedDate, dayWithDetails);
+					}
+				});
 
-			daysWithDetails.forEach((dayWithDetails) => {
-				if (everyDayIsSelected) {
-					newSelectedDays.delete(dayWithDetails.formattedDate);
-				} else {
-					newSelectedDays.set(dayWithDetails.formattedDate, dayWithDetails);
-				}
+				return newSelectedDays;
 			});
-
-			return newSelectedDays;
-		});
-	}, []);
+		},
+		[daysWithDetails]
+	);
 
 	const isDaySelected = useCallback(
 		(formattedDay: string) => {
