@@ -110,6 +110,18 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		return highest!;
 	}, [monthsWithDetails]);
 
+	const lowestWorkdaysMonth = useMemo(() => {
+		const months = [...monthsWithDetails].map(([_, month]) => month);
+		const lowest = months.reduce((acc, month) => {
+			if (!acc || month.workdays < acc?.workdays) {
+				return month;
+			}
+
+			return acc;
+		}, months[0]);
+		return lowest!;
+	}, [monthsWithDetails]);
+
 	const months = useMemo(
 		() =>
 			eachMonthOfInterval({
@@ -147,6 +159,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 
 				selectedYearsTotalWorkhours,
 				highestWorkdaysMonth,
+				lowestWorkdaysMonth,
 
 				selectedMonthAsDate,
 				selectedMonthFormatted,
