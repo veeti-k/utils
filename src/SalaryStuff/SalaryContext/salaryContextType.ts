@@ -9,17 +9,10 @@ import type {
 	MonthsWithDetails,
 } from "~shared/sharedTypes";
 
+import { SalaryFromType } from "./useSalaryForm";
+
 export type SalaryContextType = {
-	form: UseFormReturn<
-		{
-			month: string;
-			hoursPerDay: number;
-			hourlyPay: number;
-			atWorkOnSaturdays: boolean;
-			atWorkOnSundays: boolean;
-		},
-		any
-	>;
+	form: SalaryFromType;
 	months: Date[];
 
 	holidays: Holiday[];
