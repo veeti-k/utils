@@ -43,18 +43,22 @@ export const Results = () => {
 				</div>
 
 				<div>
-					<div className="flex justify-between">
-						<h2>Lowest month</h2>
-						<span className="text-yellow-500">
-							{format(lowestWorkdaysMonth.date, "MMMM")}
-						</span>
-					</div>
-					<div className="flex justify-between">
-						<h2>Highest month</h2>
-						<span className="text-green-500">
-							{format(highestWorkdaysMonth.date, "MMMM")}
-						</span>
-					</div>
+					{lowestWorkdaysMonth && (
+						<div className="flex justify-between">
+							<h2>Lowest month</h2>
+							<span className="text-yellow-500">
+								{format(lowestWorkdaysMonth.date, "MMMM")}
+							</span>
+						</div>
+					)}
+					{highestWorkdaysMonth && (
+						<div className="flex justify-between">
+							<h2>Highest month</h2>
+							<span className="text-green-500">
+								{format(highestWorkdaysMonth.date, "MMMM")}
+							</span>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
