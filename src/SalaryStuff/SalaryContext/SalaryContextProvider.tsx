@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 
 import { createCtx } from "../../context/createContext";
 import { formatMonth } from "../../shared/sharedTypes";
-import { SalaryContextType } from "./salaryContextType";
+import type { SalaryContextType } from "./salaryContextType";
 import { useDaysWithDetails } from "./useDaysWithDetails";
 import { useHolidays } from "./useHolidays";
 import { useMonthsWithDetails } from "./useMonthsWithDetails";

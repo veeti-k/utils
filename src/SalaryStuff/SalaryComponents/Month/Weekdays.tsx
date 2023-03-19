@@ -1,5 +1,5 @@
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
-import { MonthWithDetails } from "~shared/sharedTypes";
+import type { MonthWithDetails } from "~shared/sharedTypes";
 import { classNames } from "~shared/sharedUtils/classNames";
 
 type Props = {

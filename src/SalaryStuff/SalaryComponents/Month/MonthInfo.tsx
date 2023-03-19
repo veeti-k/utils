@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
-import { MonthWithDetails } from "~shared/sharedTypes";
+import type { MonthWithDetails } from "~shared/sharedTypes";
 import { classNames } from "~shared/sharedUtils/classNames";
 import { formatCurrency, formatNumber } from "~shared/sharedUtils/formatNumber";
 
