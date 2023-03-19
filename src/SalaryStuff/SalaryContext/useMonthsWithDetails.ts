@@ -1,5 +1,3 @@
-import { useCallback, useMemo } from "react";
-
 import { getMonthsWithDetails } from "~SalaryStuff/salaryUtils/getMonthsWithDetails";
 import type { DaysWithDetails } from "~shared/sharedTypes";
 
@@ -10,20 +8,13 @@ type Props = {
 };
 
 export const useMonthsWithDetails = ({ daysWithDetails, hourlyPay, selectedMonth }: Props) => {
-	const monthsWithDetails = useMemo(
-		() =>
-			getMonthsWithDetails({
-				selectedMonth,
-				daysWithDetails,
-				hourlyPay,
-			}),
-		[selectedMonth, daysWithDetails, hourlyPay]
-	);
+	const monthsWithDetails = getMonthsWithDetails({
+		selectedMonth,
+		daysWithDetails,
+		hourlyPay,
+	});
 
-	const getMonthWithDetails = useCallback(
-		(formattedMonth: string) => monthsWithDetails.get(formattedMonth),
-		[monthsWithDetails]
-	);
+	const getMonthWithDetails = (formattedMonth: string) => monthsWithDetails.get(formattedMonth);
 
 	return { getMonthWithDetails, monthsWithDetails };
 };

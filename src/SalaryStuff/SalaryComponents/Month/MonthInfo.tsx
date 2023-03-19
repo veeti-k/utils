@@ -12,8 +12,8 @@ type Props = {
 export const MonthInfo = ({ monthWithDetails }: Props) => {
 	const { highestWorkdaysMonth, lowestWorkdaysMonth } = useSalaryContext();
 
-	const isHighestMonth = highestWorkdaysMonth.formattedDate === monthWithDetails.formattedDate;
-	const isLowestMonth = lowestWorkdaysMonth.formattedDate === monthWithDetails.formattedDate;
+	const isHighestMonth = highestWorkdaysMonth?.formattedDate === monthWithDetails.formattedDate;
+	const isLowestMonth = lowestWorkdaysMonth?.formattedDate === monthWithDetails.formattedDate;
 
 	return (
 		<div className="flex flex-col gap-2">
