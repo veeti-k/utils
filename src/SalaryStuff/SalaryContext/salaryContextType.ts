@@ -1,5 +1,3 @@
-import type { UseFormReturn } from "react-hook-form";
-
 import type {
 	DayWithDetails,
 	DaysWithDetails,
@@ -9,7 +7,7 @@ import type {
 	MonthsWithDetails,
 } from "~shared/sharedTypes";
 
-import { SalaryFromType } from "./useSalaryForm";
+import type { SalaryFromType } from "./useSalaryForm";
 
 export type SalaryContextType = {
 	form: SalaryFromType;
