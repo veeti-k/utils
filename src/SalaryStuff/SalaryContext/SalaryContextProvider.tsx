@@ -6,14 +6,13 @@ import isValid from "date-fns/isValid";
 import startOfWeek from "date-fns/startOfWeek";
 import startOfYear from "date-fns/startOfYear";
 import { ReactNode, useMemo } from "react";
-import { useForm } from "react-hook-form";
 
 import { createCtx } from "../../context/createContext";
-import { formatMonth } from "../../shared/sharedTypes";
 import { SalaryContextType } from "./salaryContextType";
 import { useDaysWithDetails } from "./useDaysWithDetails";
 import { useHolidays } from "./useHolidays";
 import { useMonthsWithDetails } from "./useMonthsWithDetails";
+import { useSalaryForm } from "./useSalaryForm";
 import { useSelectedDays } from "./useSelectedDays";
 
 const [useContextInner, Context] = createCtx<SalaryContextType>();
@@ -25,15 +24,7 @@ type Props = {
 };
 
 export const SalaryContextProvider = ({ children }: Props) => {
-	const form = useForm({
-		defaultValues: {
-			month: formatMonth(new Date()),
-			hoursPerDay: 7.5,
-			hourlyPay: 0,
-			atWorkOnSaturdays: false,
-			atWorkOnSundays: false,
-		},
-	});
+	const form = useSalaryForm();
 
 	const month = form.watch("month");
 	const hoursPerDay = form.watch("hoursPerDay");
