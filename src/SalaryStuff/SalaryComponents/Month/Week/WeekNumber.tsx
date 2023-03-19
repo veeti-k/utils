@@ -1,7 +1,6 @@
 import getWeek from "date-fns/getWeek";
 
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
-import { formatDay } from "~shared/sharedTypes";
 
 type Props = {
 	week: Date;

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import NextLink from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { GasStation, Icon as IconType, ReportMoney } from "tabler-icons-react";
 
 import { Layout } from "~shared/SharedComponents/Layout";

@@ -8,7 +8,7 @@ import startOfYear from "date-fns/startOfYear";
 import { ReactNode, useMemo } from "react";
 
 import { createCtx } from "../../context/createContext";
-import { SalaryContextType } from "./salaryContextType";
+import type { SalaryContextType } from "./salaryContextType";
 import { useDaysWithDetails } from "./useDaysWithDetails";
 import { useHolidays } from "./useHolidays";
 import { useMonthsWithDetails } from "./useMonthsWithDetails";

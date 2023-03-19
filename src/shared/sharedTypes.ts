@@ -1,5 +1,5 @@
 import format from "date-fns/format";
-import { HolidaysTypes } from "date-holidays";
+import type { HolidaysTypes } from "date-holidays";
 
 export type DayWithDetails = {
 	date: Date;
