@@ -1,5 +1,3 @@
-import { useCallback, useMemo } from "react";
-
 import { getDaysWithDetails } from "~SalaryStuff/salaryUtils/getDaysWithDetails";
 import type { Holiday } from "~shared/sharedTypes";
 
@@ -20,41 +18,28 @@ export const useDaysWithDetails = ({
 	selectedMonth,
 	hourlyPay,
 }: Props) => {
-	const daysWithDetails = useMemo(
-		() =>
-			getDaysWithDetails({
-				atWorkOnSaturdays,
-				atWorkOnSundays,
-				holidays,
-				hoursPerDay,
-				selectedMonth,
-				hourlyPay,
-			}),
-		[holidays, selectedMonth, hoursPerDay, atWorkOnSaturdays, atWorkOnSundays, hourlyPay]
-	);
+	const daysWithDetails = getDaysWithDetails({
+		atWorkOnSaturdays,
+		atWorkOnSundays,
+		holidays,
+		hoursPerDay,
+		selectedMonth,
+		hourlyPay,
+	});
 
-	const getDayWithDetails = useCallback(
-		(formattedDay: string) => daysWithDetails.get(formattedDay),
-		[daysWithDetails]
-	);
+	const getDayWithDetails = (formattedDay: string) => daysWithDetails.get(formattedDay);
 
-	const getDaysWithDetailsOfMonth = useCallback(
-		(formattedMonth: string) => {
-			return [...daysWithDetails.values()].filter((dayWithDetails) =>
-				dayWithDetails.formattedDate.startsWith(formattedMonth)
-			);
-		},
-		[daysWithDetails]
-	);
+	const getDaysWithDetailsOfMonth = (formattedMonth: string) => {
+		return [...daysWithDetails.values()].filter((dayWithDetails) =>
+			dayWithDetails.formattedDate.startsWith(formattedMonth)
+		);
+	};
 
-	const getDaysWithDetailsOfWeek = useCallback(
-		(week: number) => {
-			return [...daysWithDetails.values()].filter(
-				(dayWithDetails) => dayWithDetails.week === week
-			);
-		},
-		[daysWithDetails]
-	);
+	const getDaysWithDetailsOfWeek = (week: number) => {
+		return [...daysWithDetails.values()].filter(
+			(dayWithDetails) => dayWithDetails.week === week
+		);
+	};
 
 	return {
 		daysWithDetails,

@@ -41,8 +41,8 @@ export type SalaryContextType = {
 	selectedMonthsWorkdays: DaysWithDetailsArray;
 	selectedYearsWorkdays: DaysWithDetailsArray;
 	selectedYearsTotalWorkhours: number;
-	highestWorkdaysMonth: MonthWithDetails;
-	lowestWorkdaysMonth: MonthWithDetails;
+	highestWorkdaysMonth: MonthWithDetails | null;
+	lowestWorkdaysMonth: MonthWithDetails | null;
 
 	selectedMonthAsDate: Date;
 	selectedYearFormatted: string;
