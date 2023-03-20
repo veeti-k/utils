@@ -10,6 +10,7 @@ export const useSalaryForm = () => {
 			hourlyPay: 0,
 			atWorkOnSaturdays: false,
 			atWorkOnSundays: false,
+			atWorkOnMidweekHolidays: false,
 		},
 	});
 };

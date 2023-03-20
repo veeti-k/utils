@@ -20,6 +20,7 @@ type Props = {
 	holidays: Holiday[];
 	atWorkOnSaturdays: boolean;
 	atWorkOnSundays: boolean;
+	atWorkOnMidweekHolidays: boolean;
 	hoursPerDay: number;
 	hourlyPay: number;
 };
@@ -27,6 +28,7 @@ type Props = {
 export const getDaysWithDetails = ({
 	atWorkOnSaturdays,
 	atWorkOnSundays,
+	atWorkOnMidweekHolidays,
 	holidays,
 	hoursPerDay,
 	selectedMonth,
@@ -55,7 +57,7 @@ export const getDaysWithDetails = ({
 				!isDayInSelectedYear ||
 				(isDaySaturday && !atWorkOnSaturdays) ||
 				(isDaySunday && !atWorkOnSundays) ||
-				isDayHoliday
+				(isDayHoliday && !isDayWeekend && !atWorkOnMidweekHolidays)
 					? 0
 					: hoursPerDay;
 

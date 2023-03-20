@@ -31,6 +31,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 	const hourlyPay = form.watch("hourlyPay");
 	const atWorkOnSaturdays = form.watch("atWorkOnSaturdays");
 	const atWorkOnSundays = form.watch("atWorkOnSundays");
+	const atWorkOnMidweekHolidays = form.watch("atWorkOnMidweekHolidays");
 
 	const selectedMonthAsDate = isValid(new Date(month)) ? new Date(month) : new Date();
 
@@ -49,6 +50,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		hoursPerDay,
 		atWorkOnSaturdays,
 		atWorkOnSundays,
+		atWorkOnMidweekHolidays,
 		holidays,
 		hourlyPay,
 	});

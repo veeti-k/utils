@@ -50,6 +50,15 @@ export const Form = () => {
 					className="h-[20px] w-[20px]"
 				/>
 			</label>
+
+			<label className="flex flex-col items-start gap-2">
+				Working on midweek holidays
+				<input
+					type="checkbox"
+					{...form.register("atWorkOnMidweekHolidays")}
+					className="h-[20px] w-[20px]"
+				/>
+			</label>
 		</div>
 	);
 };
