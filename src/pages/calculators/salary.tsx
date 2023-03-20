@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { Form } from "~SalaryStuff/SalaryComponents/Form/Form";
 import { Month } from "~SalaryStuff/SalaryComponents/Month/Month";
 import { Results } from "~SalaryStuff/SalaryComponents/Results/Results";
+import { SelectedDays } from "~SalaryStuff/SalaryComponents/SelectedDays/SelectedDays";
 import {
 	SalaryContextProvider,
 	useSalaryContext,
@@ -16,13 +17,15 @@ const SalaryPage: NextPage = () => {
 	return (
 		<Layout title="Salary | Calculators">
 			<main className="mx-auto flex w-full max-w-[1300px] flex-col justify-center gap-3 p-3 pt-[5vh] bp-1:flex-row">
-				<div className="mx-auto flex h-max w-full max-w-[400px] flex-col gap-3 md:sticky md:top-3">
+				<div className="mx-auto flex h-max w-full max-w-[400px] flex-col gap-3 overflow-auto md:sticky md:top-3">
 					<Title>Salary calculator</Title>
 
 					<div className="flex flex-col gap-3">
 						<Form />
 
 						<Results />
+
+						<SelectedDays />
 					</div>
 				</div>
 

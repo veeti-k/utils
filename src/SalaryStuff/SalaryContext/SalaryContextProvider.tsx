@@ -61,6 +61,7 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		isDaySelected,
 		setDaysSelected,
 		setDaysWithDetailsSelected,
+		selectedDays,
 	} = useSelectedDays({
 		daysWithDetails,
 	});
@@ -130,6 +131,8 @@ export const SalaryContextProvider = ({ children }: Props) => {
 				isDaySelected,
 				setDaysSelected,
 				setDaysWithDetailsSelected,
+
+				selectedDays,
 
 				daysWithDetails,
 				monthsWithDetails,
