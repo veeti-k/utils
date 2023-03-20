@@ -15,50 +15,56 @@ export const Form = () => {
 				{...form.register("month", { valueAsDate: true })}
 			/>
 
-			<Input
-				type="number"
-				label="Hourly pay"
-				min={0}
-				step={"any"}
-				autoComplete="off"
-				{...form.register("hourlyPay", { valueAsNumber: true })}
-			/>
-
-			<Input
-				type="number"
-				label="Hours / day"
-				min={0}
-				step={"any"}
-				autoComplete="off"
-				{...form.register("hoursPerDay", { valueAsNumber: true })}
-			/>
-
-			<label className="flex flex-col items-start gap-2">
-				Working on Saturdays
-				<input
-					type="checkbox"
-					{...form.register("atWorkOnSaturdays")}
-					className="h-[20px] w-[20px]"
+			<div className="flex gap-2">
+				<Input
+					type="number"
+					label="Hourly pay"
+					min={0}
+					step={"any"}
+					autoComplete="off"
+					{...form.register("hourlyPay", { valueAsNumber: true })}
 				/>
-			</label>
 
-			<label className="flex flex-col items-start gap-2">
-				Working on Sundays
-				<input
-					type="checkbox"
-					{...form.register("atWorkOnSundays")}
-					className="h-[20px] w-[20px]"
+				<Input
+					type="number"
+					label="Hours / day"
+					min={0}
+					step={"any"}
+					autoComplete="off"
+					{...form.register("hoursPerDay", { valueAsNumber: true })}
 				/>
-			</label>
+			</div>
 
-			<label className="flex flex-col items-start gap-2">
-				Working on midweek holidays
-				<input
-					type="checkbox"
-					{...form.register("atWorkOnMidweekHolidays")}
-					className="h-[20px] w-[20px]"
-				/>
-			</label>
+			<div className="flex flex-col gap-2">
+				<h2>Working on</h2>
+
+				<label className="flex items-start gap-2">
+					<input
+						type="checkbox"
+						{...form.register("atWorkOnSaturdays")}
+						className="h-[20px] w-[20px]"
+					/>
+					Sat
+				</label>
+
+				<label className="flex items-start gap-2">
+					<input
+						type="checkbox"
+						{...form.register("atWorkOnSundays")}
+						className="h-[20px] w-[20px]"
+					/>
+					Sun
+				</label>
+
+				<label className="flex items-start gap-2">
+					<input
+						type="checkbox"
+						{...form.register("atWorkOnMidweekHolidays")}
+						className="h-[20px] w-[20px]"
+					/>
+					Midweek holidays
+				</label>
+			</div>
 		</div>
 	);
 };

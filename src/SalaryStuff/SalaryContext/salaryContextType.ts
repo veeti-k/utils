@@ -21,6 +21,8 @@ export type SalaryContextType = {
 	setDaysSelected: (formattedDays: string[], value: boolean) => void;
 	setDaysWithDetailsSelected: (daysWithDetails: DayWithDetails[], value: boolean) => void;
 
+	selectedDays: Map<string, DayWithDetails>;
+
 	daysWithDetails: DaysWithDetails;
 	monthsWithDetails: MonthsWithDetails;
 	getDayWithDetails: (formattedDay: string) => DayWithDetails | undefined;
