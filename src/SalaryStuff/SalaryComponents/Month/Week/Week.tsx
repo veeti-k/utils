@@ -18,7 +18,7 @@ export const Week = ({ week, month }: Props) => {
 
 	return (
 		<>
-			<WeekNumber week={week} days={days} />
+			<WeekNumber week={week} />
 
 			{days.map((day) => (
 				<Day key={day.toISOString()} day={day} month={month} />

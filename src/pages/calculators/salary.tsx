@@ -8,6 +8,7 @@ import {
 	SalaryContextProvider,
 	useSalaryContext,
 } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { SelectedDaysContextProvider } from "~SalaryStuff/SelectedDays/SelectedDaysContext";
 import { Layout } from "~shared/SharedComponents/Layout";
 import { Title } from "~shared/SharedComponents/Title";
 
@@ -15,10 +16,10 @@ const SalaryPage: NextPage = () => {
 	const { months } = useSalaryContext();
 
 	return (
-		<Layout title="Salary | Calculators">
+		<Layout title="💰 | Calculators">
 			<main className="mx-auto flex w-full max-w-[1300px] flex-col justify-center gap-3 p-3 pt-[5vh] bp-1:flex-row">
 				<div className="mx-auto flex h-max w-full max-w-[400px] flex-col gap-3 overflow-auto md:sticky md:top-3">
-					<Title>Salary calculator</Title>
+					<Title>💰</Title>
 
 					<div className="flex flex-col gap-3">
 						<Form />
@@ -44,7 +45,9 @@ const SalaryPage: NextPage = () => {
 const SalaryPageWrapper = () => {
 	return (
 		<SalaryContextProvider>
-			<SalaryPage />
+			<SelectedDaysContextProvider>
+				<SalaryPage />
+			</SelectedDaysContextProvider>
 		</SalaryContextProvider>
 	);
 };

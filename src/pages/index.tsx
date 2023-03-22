@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 
 						<div className="flex flex-col gap-3">
 							<Link href="/calculators/salary" icon={ReportMoney}>
-								<span className="text-lg">Salary</span>
+								<span className="text-lg">💰</span>
 							</Link>
 
 							<Link href="/calculators/fuel" icon={GasStation}>

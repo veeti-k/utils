@@ -8,12 +8,10 @@ import startOfYear from "date-fns/startOfYear";
 import type { ReactNode } from "react";
 
 import { createCtx } from "../../context/createContext";
-import type { SalaryContextType } from "./salaryContextType";
 import { useDaysWithDetails } from "./useDaysWithDetails";
 import { useHolidays } from "./useHolidays";
 import { useMonthsWithDetails } from "./useMonthsWithDetails";
 import { useSalaryForm } from "./useSalaryForm";
-import { useSelectedDays } from "./useSelectedDays";
 
 const [useContextInner, Context] = createCtx<SalaryContextType>();
 
@@ -24,6 +22,12 @@ type Props = {
 };
 
 export const SalaryContextProvider = ({ children }: Props) => {
+	const value = useSalaryContextValue();
+
+	return <Context.Provider value={value}>{children}</Context.Provider>;
+};
+
+function useSalaryContextValue() {
 	const form = useSalaryForm();
 
 	const month = form.watch("month");
@@ -53,17 +57,6 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		atWorkOnMidweekHolidays,
 		holidays,
 		hourlyPay,
-	});
-
-	const {
-		toggleDaysSelected,
-		toggleDaysWithDetailsSelected,
-		isDaySelected,
-		setDaysSelected,
-		setDaysWithDetailsSelected,
-		selectedDays,
-	} = useSelectedDays({
-		daysWithDetails,
 	});
 
 	const { getMonthWithDetails, monthsWithDetails } = useMonthsWithDetails({
@@ -118,53 +111,41 @@ export const SalaryContextProvider = ({ children }: Props) => {
 		end: endOfWeek(endOfYear(selectedMonthAsDate)),
 	});
 
-	return (
-		<Context.Provider
-			value={{
-				form,
-				months,
+	return {
+		form,
+		months,
 
-				holidays,
+		holidays,
 
-				toggleDaysSelected,
-				toggleDaysWithDetailsSelected,
-				isDaySelected,
-				setDaysSelected,
-				setDaysWithDetailsSelected,
+		daysWithDetails,
+		monthsWithDetails,
+		getDayWithDetails,
+		getDaysWithDetailsOfMonth,
+		getDaysWithDetailsOfWeek,
+		getMonthWithDetails,
 
-				selectedDays,
+		selectedYearsWorkdays,
+		selectedMonthsWorkdays,
 
-				daysWithDetails,
-				monthsWithDetails,
-				getDayWithDetails,
-				getDaysWithDetailsOfMonth,
-				getDaysWithDetailsOfWeek,
-				getMonthWithDetails,
+		selectedYearsSalary,
+		selectedMonthsSalary,
 
-				selectedYearsWorkdays,
-				selectedMonthsWorkdays,
+		selectedYearsTotalWorkhours,
+		highestWorkdaysMonth: highestWorkdaysMonth ?? null,
+		lowestWorkdaysMonth: lowestWorkdaysMonth ?? null,
 
-				selectedYearsSalary,
-				selectedMonthsSalary,
+		selectedMonthAsDate,
+		selectedMonthFormatted,
+		selectedYearFormatted,
 
-				selectedYearsTotalWorkhours,
-				highestWorkdaysMonth: highestWorkdaysMonth ?? null,
-				lowestWorkdaysMonth: lowestWorkdaysMonth ?? null,
+		inputs: {
+			month,
+			hoursPerDay,
+			hourlyPay,
+			atWorkOnSundays,
+			atWorkOnSaturdays,
+		},
+	};
+}
 
-				selectedMonthAsDate,
-				selectedMonthFormatted,
-				selectedYearFormatted,
-
-				inputs: {
-					month,
-					hoursPerDay,
-					hourlyPay,
-					atWorkOnSundays,
-					atWorkOnSaturdays,
-				},
-			}}
-		>
-			{children}
-		</Context.Provider>
-	);
-};
+export type SalaryContextType = ReturnType<typeof useSalaryContextValue>;

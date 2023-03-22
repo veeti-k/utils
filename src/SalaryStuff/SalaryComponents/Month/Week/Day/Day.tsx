@@ -3,6 +3,7 @@ import isSameMonth from "date-fns/isSameMonth";
 import isToday from "date-fns/isToday";
 
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { useSelectedDaysContext } from "~SalaryStuff/SelectedDays/SelectedDaysContext";
 import { formatDay } from "~shared/sharedTypes";
 import { classNames } from "~shared/sharedUtils/classNames";
 
@@ -12,18 +13,15 @@ type Props = {
 };
 
 export const Day = ({ day, month }: Props) => {
-	const {
-		getDayWithDetails,
-		isDaySelected,
-		setDaysWithDetailsSelected,
-		toggleDaysWithDetailsSelected,
-	} = useSalaryContext();
+	const { getDayWithDetails } = useSalaryContext();
+
+	const { isSelectedDay, setDaysSelected, toggleDaysSelected } = useSelectedDaysContext();
 
 	const dayWithDetails = getDayWithDetails(formatDay(day));
 	if (!dayWithDetails) return null;
 
 	const isDimmed = !isSameMonth(day, month);
-	const isSelected = isDaySelected(dayWithDetails.formattedDate);
+	const isSelected = isSelectedDay(dayWithDetails.formattedDate);
 	const isHoliday = dayWithDetails.isHoliday;
 
 	return (
@@ -36,12 +34,12 @@ export const Day = ({ day, month }: Props) => {
 				isSelected &&
 					"border-transparent bg-transparent outline-none outline-1 outline-offset-0 outline-blue-500"
 			)}
-			onClick={() => toggleDaysWithDetailsSelected([dayWithDetails])}
+			onClick={() => toggleDaysSelected([dayWithDetails.formattedDate])}
 			onMouseOverCapture={(e) => {
 				if (e.shiftKey) {
-					setDaysWithDetailsSelected([dayWithDetails], true);
+					setDaysSelected([dayWithDetails.formattedDate], true);
 				} else if (e.ctrlKey) {
-					setDaysWithDetailsSelected([dayWithDetails], false);
+					setDaysSelected([dayWithDetails.formattedDate], false);
 				}
 			}}
 		>

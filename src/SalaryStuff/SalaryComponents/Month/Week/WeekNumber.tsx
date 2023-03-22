@@ -1,15 +1,16 @@
 import getWeek from "date-fns/getWeek";
 
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { useSelectedDaysContext } from "~SalaryStuff/SelectedDays/SelectedDaysContext";
 
 type Props = {
 	week: Date;
-	days: Date[];
 };
 
-export const WeekNumber = ({ week, days }: Props) => {
-	const { toggleDaysWithDetailsSelected, setDaysWithDetailsSelected, getDaysWithDetailsOfWeek } =
-		useSalaryContext();
+export const WeekNumber = ({ week }: Props) => {
+	const { getDaysWithDetailsOfWeek } = useSalaryContext();
+
+	const { setDaysSelected, toggleDaysSelected } = useSelectedDaysContext();
 
 	const weekNumber = getWeek(week, {
 		weekStartsOn: 1,
@@ -22,25 +23,31 @@ export const WeekNumber = ({ week, days }: Props) => {
 		<div
 			className="flex items-center justify-center rounded-md border-[1px] border-primary-700 bg-primary-800"
 			onClick={(e) =>
-				toggleDaysWithDetailsSelected(
+				toggleDaysSelected(
 					e.altKey
-						? daysWithDetailsOfWeek.filter((day) => day.isWorkday)
-						: daysWithDetailsOfWeek
+						? daysWithDetailsOfWeek
+								.filter((day) => day.isWorkday)
+								.map((d) => d.formattedDate)
+						: daysWithDetailsOfWeek.map((d) => d.formattedDate)
 				)
 			}
 			onMouseOverCapture={(e) => {
 				if (e.shiftKey) {
-					setDaysWithDetailsSelected(
+					setDaysSelected(
 						e.altKey
-							? daysWithDetailsOfWeek.filter((d) => d.isWorkday)
-							: daysWithDetailsOfWeek,
+							? daysWithDetailsOfWeek
+									.filter((d) => d.isWorkday)
+									.map((d) => d.formattedDate)
+							: daysWithDetailsOfWeek.map((d) => d.formattedDate),
 						true
 					);
 				} else if (e.ctrlKey) {
-					setDaysWithDetailsSelected(
+					setDaysSelected(
 						e.altKey
-							? daysWithDetailsOfWeek.filter((d) => d.isWorkday)
-							: daysWithDetailsOfWeek,
+							? daysWithDetailsOfWeek
+									.filter((d) => d.isWorkday)
+									.map((d) => d.formattedDate)
+							: daysWithDetailsOfWeek.map((d) => d.formattedDate),
 						false
 					);
 				}

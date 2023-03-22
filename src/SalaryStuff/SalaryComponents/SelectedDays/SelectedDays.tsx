@@ -1,15 +1,23 @@
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { useSelectedDaysContext } from "~SalaryStuff/SelectedDays/SelectedDaysContext";
+import type { DayWithDetails } from "~shared/sharedTypes";
 import { formatCurrency } from "~shared/sharedUtils/formatNumber";
 
 export function SelectedDays() {
-	const { selectedDays, daysWithDetails } = useSalaryContext();
+	const { daysWithDetails, inputs } = useSalaryContext();
 
-	const selectedDaysArr = [...selectedDays.values()];
+	const { selectedDays, isSelectedDay } = useSelectedDaysContext();
 
-	const totalSelectedDaysSalary = selectedDaysArr.reduce((acc, day) => acc + day.salary, 0);
+	const selectedDaysWithDetails = selectedDays
+		.map((day) => daysWithDetails.get(day))
+		.filter(Boolean) as DayWithDetails[];
+
+	const totalSelectedDaysSalary =
+		selectedDaysWithDetails.reduce((acc, cur) => acc + cur.workhours, 0) * inputs.hourlyPay;
+
 	const salaryExcludingSelectedDays = [...daysWithDetails.values()].reduce(
 		(acc, dayWithDetails) => {
-			if (selectedDays.has(dayWithDetails.formattedDate)) {
+			if (isSelectedDay(dayWithDetails.formattedDate)) {
 				return acc;
 			}
 

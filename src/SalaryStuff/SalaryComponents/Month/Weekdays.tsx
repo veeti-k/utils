@@ -1,4 +1,5 @@
 import { useSalaryContext } from "~SalaryStuff/SalaryContext/SalaryContextProvider";
+import { useSelectedDaysContext } from "~SalaryStuff/SelectedDays/SelectedDaysContext";
 import type { MonthWithDetails } from "~shared/sharedTypes";
 import { classNames } from "~shared/sharedUtils/classNames";
 
@@ -7,7 +8,9 @@ type Props = {
 };
 
 export const Weekdays = ({ monthWithDetails }: Props) => {
-	const { getDaysWithDetailsOfMonth, toggleDaysWithDetailsSelected } = useSalaryContext();
+	const { getDaysWithDetailsOfMonth } = useSalaryContext();
+
+	const { toggleDaysSelected } = useSelectedDaysContext();
 
 	return (
 		<div className="grid grid-cols-8 gap-1 ">
@@ -25,10 +28,12 @@ export const Weekdays = ({ monthWithDetails }: Props) => {
 							monthWithDetails.formattedDate
 						);
 
-						toggleDaysWithDetailsSelected(
+						toggleDaysSelected(
 							e.altKey
-								? daysWithDetailsOfMonth.filter((day) => day.isWorkday)
-								: daysWithDetailsOfMonth
+								? daysWithDetailsOfMonth
+										.filter((day) => day.isWorkday)
+										.map((d) => d.formattedDate)
+								: daysWithDetailsOfMonth.map((d) => d.formattedDate)
 						);
 					}}
 				>
