@@ -44,7 +44,7 @@ export const Form = () => {
 						{...form.register("atWorkOnSaturdays")}
 						className="h-[20px] w-[20px]"
 					/>
-					Sat
+					Saturdays
 				</label>
 
 				<label className="flex items-start gap-2">
@@ -53,7 +53,7 @@ export const Form = () => {
 						{...form.register("atWorkOnSundays")}
 						className="h-[20px] w-[20px]"
 					/>
-					Sun
+					Sundays
 				</label>
 
 				<label className="flex items-start gap-2">
