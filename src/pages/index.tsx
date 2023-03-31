@@ -41,6 +41,10 @@ const Home: NextPage = () => {
 							<Link href="/calculators/fuel" icon={GasStation}>
 								<span className="text-lg">Fuel</span>
 							</Link>
+
+							<Link href="/calculators/ppi" icon={GasStation}>
+								<span className="text-lg">Ppi</span>
+							</Link>
 						</div>
 					</div>
 				</div>
