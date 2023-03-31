@@ -11,7 +11,7 @@ const Link = ({ href, icon, children }: { href: string; icon: IconType; children
 	return (
 		<NextLink
 			href={href}
-			className="flex cursor-pointer select-none items-center gap-4 rounded-md border-[1px] border-primary-700 bg-primary-800 p-4 transition-all duration-150 hover:border-primary-600 hover:bg-primary-700 active:scale-95"
+			className="flex cursor-pointer items-center gap-4 rounded-md border-[1px] border-primary-700 bg-primary-800 p-4 transition-all duration-150 hover:border-primary-600 hover:bg-primary-700 active:scale-95"
 		>
 			<Icon
 				className="rounded-md border-[1px] border-primary-600 bg-primary-700 p-2"
