@@ -23,7 +23,7 @@ const PpiPage: NextPage = () => {
 	const totalPixels = screenWidth * screenHeight;
 
 	return (
-		<Layout title="Calculators | Fuel">
+		<Layout title="Calculators | PPI">
 			<main className="mx-auto w-full max-w-[400px] p-3 pt-[5vh] sm:pt-[10vh]">
 				<h1 className="pb-4 text-3xl font-medium">Pixels per inch calculator</h1>
 
