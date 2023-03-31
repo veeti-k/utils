@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
-import { GasStation, Icon as IconType, ReportMoney } from "tabler-icons-react";
+import {
+	ArrowsDiagonalMinimize2,
+	GasStation,
+	Icon as IconType,
+	ReportMoney,
+} from "tabler-icons-react";
 
 import { Layout } from "~shared/SharedComponents/Layout";
 
@@ -42,7 +47,7 @@ const Home: NextPage = () => {
 								<span className="text-lg">Fuel</span>
 							</Link>
 
-							<Link href="/calculators/ppi" icon={GasStation}>
+							<Link href="/calculators/ppi" icon={ArrowsDiagonalMinimize2}>
 								<span className="text-lg">Ppi</span>
 							</Link>
 						</div>
