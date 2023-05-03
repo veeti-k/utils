@@ -34,8 +34,10 @@ function useSelectedDaysContextValue() {
 
 	function setDaysSelected(days: string[], selected: boolean) {
 		if (selected) {
-			setSelectedDays([...selectedDays, ...days]);
-		} else {
+            const daysToSelect = days.filter((day) => !selectedDays.includes(day));
+
+            setSelectedDays([...selectedDays, ...daysToSelect]);
+        } else {
 			setSelectedDays(selectedDays.filter((day) => !days.includes(day)));
 		}
 	}
