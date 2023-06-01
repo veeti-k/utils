@@ -23,8 +23,6 @@ export function CutsResult() {
 		return acc;
 	}, [] as { cutOfSalary: number; salaryLeft: number; cut: Cut }[]);
 
-	console.log({ calculatedCuts, cuts });
-
 	return (
 		<div className="rounded-md border-[1px] border-primary-700 bg-primary-800 p-3">
 			<h2 className="pb-2 text-2xl font-medium">Cuts</h2>
