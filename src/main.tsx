@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -25,13 +25,15 @@ const PpiCalculatorPage = React.lazy(() =>
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route index element={<IndexPage />} />
-				<Route path="/calculators/salary" element={<SalaryCalculatorPage />} />
-				<Route path="/calculators/fuel" element={<FuelCalculatorPage />} />
-				<Route path="/calculators/ppi" element={<PpiCalculatorPage />} />
-			</Routes>
-		</BrowserRouter>
+		<Suspense>
+			<BrowserRouter>
+				<Routes>
+					<Route index element={<IndexPage />} />
+					<Route path="/calculators/salary" element={<SalaryCalculatorPage />} />
+					<Route path="/calculators/fuel" element={<FuelCalculatorPage />} />
+					<Route path="/calculators/ppi" element={<PpiCalculatorPage />} />
+				</Routes>
+			</BrowserRouter>
+		</Suspense>
 	</React.StrictMode>
 );
