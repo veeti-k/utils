@@ -1,6 +1,6 @@
 import Holidays from "date-holidays";
 
-import type { Holiday } from "~shared/sharedTypes";
+import { Holiday } from "../pages/salaryCalculator/salaryTypes";
 
 export const getHolidays = (year: Date): Holiday[] =>
 	new Holidays("fi").getHolidays(year).map((h) => ({

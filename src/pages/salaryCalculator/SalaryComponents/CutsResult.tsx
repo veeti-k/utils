@@ -7,7 +7,7 @@ export function CutsResult() {
 
 	const cuts = form.watch("cuts");
 
-	const calculatedCuts = cuts.reduce((acc, cut, currI, array) => {
+	const calculatedCuts = cuts.reduce((acc, cut, currI) => {
 		const currentSalary = currI === 0 ? selectedMonthsSalary : acc[currI - 1].salaryLeft;
 
 		const cutOfSalary =

@@ -4,9 +4,24 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import { IndexPage } from "./pages/IndexPage.tsx";
-import { FuelCalculatorPage } from "./pages/fuelCalculator/FuelCalculator.tsx";
-import { PpiCalculatorPage } from "./pages/ppiCalculator.tsx";
-import { SalaryCalculatorPage } from "./pages/salaryCalculator/salaryCalculatorPage.tsx";
+
+const SalaryCalculatorPage = React.lazy(() =>
+	import("./pages/salaryCalculator/SalaryCalculatorPage.tsx").then((module) => ({
+		default: module.SalaryCalculatorPage,
+	}))
+);
+
+const FuelCalculatorPage = React.lazy(() =>
+	import("./pages/fuelCalculator/FuelCalculator.tsx").then((module) => ({
+		default: module.FuelCalculatorPage,
+	}))
+);
+
+const PpiCalculatorPage = React.lazy(() =>
+	import("./pages/ppiCalculator.tsx").then((module) => ({
+		default: module.PpiCalculatorPage,
+	}))
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>

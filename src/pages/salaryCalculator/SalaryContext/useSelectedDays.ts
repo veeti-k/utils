@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { DayWithDetails, DaysWithDetails } from "~shared/sharedTypes";
+import { DayWithDetails, DaysWithDetails } from "../salaryTypes";
 
 type Props = {
 	daysWithDetails: DaysWithDetails;
